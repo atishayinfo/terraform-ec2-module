@@ -39,8 +39,15 @@ variable "volume_size" {
   default     = 8
 }
 
+
 variable "volume_type" {
   description = "Volume type (e.g., gp2, io1)"
   type        = string
   default     = "gp2"
+}
+
+variable "additional_tags" {
+  description = "Additional tags to add to the EC2 instance"
+  type        = map(string)
+  default     = {}
 }
