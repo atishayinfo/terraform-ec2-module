@@ -1,4 +1,3 @@
-# terraform.tfvars
 region           = "ca-central-1"
 ami_id           = "ami-0bcda2433f3dabc41"
 key_name         = "aws-key"
