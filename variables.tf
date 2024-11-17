@@ -1,5 +1,3 @@
-# variables.tf
-
 variable "region" {
   description = "The AWS region to launch the instance"
   type        = string
@@ -11,15 +9,15 @@ variable "ami_id" {
   type        = string
 }
 
+variable "key_name" {
+  description = "Key name for SSH access"
+  type        = string
+}
+
 variable "instance_type" {
   description = "Type of EC2 instance"
   type        = string
   default     = "t2.micro"
-}
-
-variable "key_name" {
-  description = "Key name for SSH access"
-  type        = string
 }
 
 variable "instance_name" {
@@ -38,7 +36,6 @@ variable "volume_size" {
   type        = number
   default     = 8
 }
-
 
 variable "volume_type" {
   description = "Volume type (e.g., gp2, io1)"
