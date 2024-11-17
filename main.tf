@@ -1,27 +1,20 @@
-# main.tf
 provider "aws" {
   region = var.region
 }
 
-resource "aws_instance" "ec2_instance" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  key_name      = var.key_name
+module "ec2_instance" {
+  source              = "git::https://github.com/atishayinfo/terraform-ec2-module.git"
 
-  tags = merge(
-    {
-      Name = var.instance_name
-    },
-    var.additional_tags
-  )
+  # Required arguments for the ec2_instance module
+  ami_id              = var.ami_id
+  key_name            = var.key_name
+  security_group_id   = var.security_group_id
 
-  # Optional: Security group for the instance
-  vpc_security_group_ids = [var.security_group_id]
-
-  # Optional: EBS volume (for custom storage)
-  root_block_device {
-    volume_size = var.volume_size
-    volume_type = var.volume_type
-  }
+  # Optional arguments for the ec2_instance module
+  instance_type       = var.instance_type
+  instance_name       = var.instance_name
+  volume_size         = var.volume_size
+  volume_type         = var.volume_type
+  additional_tags     = var.additional_tags
+  region              = var.region
 }
-
