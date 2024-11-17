@@ -7,3 +7,7 @@ instance_name    = "my-ec2-instance"
 security_group_id = "sg-088017454f6a86e02"
 volume_size      = 8
 volume_type      = "gp2"
+additional_tags = {
+  Environment = "Production"
+  Project     = "MyTerraformProject"
+}
